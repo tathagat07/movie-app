@@ -12,7 +12,7 @@ public class Movie {
   private String overview;
   private int revenue;
 
-  public Movie() {
+  public Movie(int i, String title1, int id1, String date1) {
   }
 
   public Movie(int id, String title, String release_date, String overview, int revenue) {
