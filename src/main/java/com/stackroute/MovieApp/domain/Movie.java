@@ -3,7 +3,7 @@ package com.stackroute.MovieApp.domain;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
+@Entity(name = "Movie")
 public class Movie {
   @Id
   private int id;

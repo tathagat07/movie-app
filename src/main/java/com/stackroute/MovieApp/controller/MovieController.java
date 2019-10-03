@@ -26,7 +26,7 @@ public class MovieController {
 
     try {
       movieService.saveNewMovie(movie);
-      return new ResponseEntity<Movie>(movie,HttpStatus.CREATED);
+      return new ResponseEntity<String >("Successfully created.",HttpStatus.CREATED);
     }catch (Exception e){
       return new ResponseEntity<Movie>(movie,HttpStatus.CONFLICT);
     }
@@ -53,9 +53,9 @@ public class MovieController {
   public ResponseEntity<?>  deleteById(@RequestBody Movie movie,@PathVariable int id){
     try{
       movieService.deleteById(id);
-      return new ResponseEntity<Movie>(movie,HttpStatus.OK);
+      return new ResponseEntity<String >("Movie deleted.",HttpStatus.OK);
     }catch (Exception e){
-      return new ResponseEntity<String>("Cannot be deleted beacause movie doesn't exist",HttpStatus.CONFLICT);
+      return new ResponseEntity<String>("Cannot be deleted because movie doesn't exist",HttpStatus.CONFLICT);
     }
 
   }
