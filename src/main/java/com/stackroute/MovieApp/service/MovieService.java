@@ -19,4 +19,6 @@ public interface MovieService {
 
   public Movie updateById(Movie movie, int id) ;
 
+  public List<Movie> getByName(String title);
+
 }

@@ -71,5 +71,12 @@ public class MovieController {
 
   }
 
+  @GetMapping("/titles/{title}")
+  public ResponseEntity<List<Movie>> getByName(@RequestParam   String title) {
+    List<Movie> movie = movieService.getByName(title);
+    return new ResponseEntity<List<Movie>>(movie, HttpStatus.OK);
+  }
+
+
 
 }
