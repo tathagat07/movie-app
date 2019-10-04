@@ -4,7 +4,6 @@ import com.stackroute.MovieApp.domain.Movie;
 import com.stackroute.MovieApp.exception.MovieAlreadyExistsException;
 import com.stackroute.MovieApp.exception.MovieNotFoundException;
 import com.stackroute.MovieApp.repository.MovieRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.ApplicationListener;
@@ -14,18 +13,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+@Service(value = "dummy")
+public class trackDummyServiceImpl implements MovieService {
 
- @Service(value = "movieService")
- @Primary
- public class MovieServiceImpl implements MovieService,  CommandLineRunner {
-
-   MovieRepository movieRepository;
-
-  @Autowired
-    public MovieServiceImpl(MovieRepository movieRepository){
-    super();
-    this.movieRepository = movieRepository;
-  }
+  MovieRepository movieRepository;
 
   @Override
   public Movie saveNewMovie(Movie movie) throws MovieAlreadyExistsException {
@@ -36,38 +27,42 @@ import java.util.Optional;
     if (savedMovie == null){
       throw new MovieAlreadyExistsException("Movie already exists");
     }
-   return savedMovie;
+    System.out.println("Inside dummy service Impl saveMovie.");
+    return savedMovie;
   }
 
   @Override
   public List<Movie> getAllMovie() {
+    System.out.println("Inside dummy service Impl getAllMovie.");
     return movieRepository.findAll();
   }
 
   @Override
   public Optional<Movie> getById(int id) throws MovieNotFoundException {
     Optional<Movie> movieId = movieRepository.findById(id);
+    System.out.println("Inside dummy service Impl getId.");
     if (movieId.isPresent()){
-       return movieId;
+      return movieId;
     }else {
       throw new MovieNotFoundException("Movie Not Found");
     }
   }
 
   @Override
-  public boolean deleteById(int id) throws MovieNotFoundException{
+  public boolean deleteById(int id) throws MovieNotFoundException {
     Optional<Movie> movieId = movieRepository.findById(id);
+    System.out.println("Inside dummy service Impl deleteById.");
     if (movieId.isEmpty()){
       throw new MovieNotFoundException("Movie not found");
     }
-     movieRepository.deleteById(id);
-     return true;
-
+    movieRepository.deleteById(id);
+    return true;
   }
 
   @Override
   public Movie updateById(Movie movie, int id) throws MovieNotFoundException {
     Optional<Movie> userOptional = movieRepository.findById(id);
+    System.out.println("Inside dummy service movie Impl updateById");
     if(userOptional.isEmpty()){
       throw new MovieNotFoundException("Track not found!");
     }
@@ -79,14 +74,8 @@ import java.util.Optional;
   @Override
   public List<Movie> getByName(String title) {
     List<Movie> id = movieRepository.findTitleByName(title);
+    System.out.println("Inside dummy service Impl getByName.");
     return id;
   }
-
-
-  @Override
-  public void run(String... args) throws Exception {
-
-  }
-
 
 }
