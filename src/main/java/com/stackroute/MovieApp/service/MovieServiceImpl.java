@@ -16,20 +16,8 @@ import java.util.List;
 import java.util.Optional;
 
  @Service
- public class MovieServiceImpl implements MovieService, ApplicationListener<ContextRefreshedEvent>, CommandLineRunner {
+ public class MovieServiceImpl implements MovieService,  CommandLineRunner {
 
-   @Value("${movie.1.title:default}")
-   String title1;
-   @Value("${movie.1.id:default}")
-   int id1;
-   @Value("${movie.1.release_date:default}")
-   String date1;
-   @Value("${movie.2.title:default}")
-   String title2;
-   @Value("${movie.2.id:default}")
-   int id2;
-   @Value("${musix.2.release_date:default}")
-   String date2;
 
    MovieRepository movieRepository;
 
@@ -102,9 +90,4 @@ import java.util.Optional;
 
   }
 
-  @Override
-  public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-    movieRepository.save(new Movie(1, title1, id1, date1));
-    movieRepository.save(new Movie(2, title2, id2, date2));
-  }
 }
