@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
- @Service(value = "movieService")
+ @Service()
  @Primary
  public class MovieServiceImpl implements MovieService,  CommandLineRunner {
 
@@ -69,7 +69,7 @@ import java.util.Optional;
   public Movie updateById(Movie movie, int id) throws MovieNotFoundException {
     Optional<Movie> userOptional = movieRepository.findById(id);
     if(userOptional.isEmpty()){
-      throw new MovieNotFoundException("Track not found!");
+      throw new MovieNotFoundException("Movie not found!");
     }
     movie.setId(id);
     movieRepository.save(movie);

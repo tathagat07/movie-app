@@ -84,18 +84,6 @@
       <artifactId>activation</artifactId>
       <version>1.1.1</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-      <version>2.1.8.RELEASE</version>
-    </dependency>
-    <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-release-plugin -->
-    <dependency>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-release-plugin</artifactId>
-      <version>2.5.3</version>
-    </dependency>
 
     <dependency>
         <groupId>mysql</groupId>
@@ -114,7 +102,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
 
 	<build>
 		<plugins>

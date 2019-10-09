@@ -28,16 +28,6 @@ public class ApplicationContextConfig {
     return "DB Connection for DEV-H2";
   }
 
-  @Profile("test")
-  @Bean
-  public String testDataBaseConnection(){
-
-    System.out.println("DB Connection for test");
-    System.out.println(driverClassName);
-    System.out.println(url);
-    return "DB Connection for test";
-  }
-
   @Profile("prod")
   @Bean
   public String prodDataBaseConnection(){
