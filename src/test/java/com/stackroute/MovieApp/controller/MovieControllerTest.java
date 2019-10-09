@@ -93,7 +93,7 @@ public class MovieControllerTest {
   public void getAllMovies() throws Exception {
 
     when(movieService.getAllMovie()).thenReturn(list);
-    mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/saveNewMovie")
+    mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/getAllMovies")
       .contentType(MediaType.APPLICATION_JSON).content(asJsonString(movie)))
       .andExpect(MockMvcResultMatchers.status().isOk())
       .andDo(MockMvcResultHandlers.print());

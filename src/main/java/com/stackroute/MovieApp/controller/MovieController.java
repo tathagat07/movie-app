@@ -33,7 +33,6 @@ public class MovieController {
   }
 
 
-
   private final Logger logger = (Logger) LoggerFactory.getLogger(this.getClass());
 
   @Autowired
