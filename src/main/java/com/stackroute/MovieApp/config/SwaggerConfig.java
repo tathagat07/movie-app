@@ -1,7 +1,6 @@
-package com.stackroute.MovieApp.configuration;
+package com.stackroute.MovieApp.config;
 
 
-import com.google.common.base.Predicate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.RequestHandlerSelectors;

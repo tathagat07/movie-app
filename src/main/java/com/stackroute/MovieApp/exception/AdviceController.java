@@ -1,4 +1,4 @@
-package com.stackroute.MovieApp.configuration;
+package com.stackroute.MovieApp.exception;
 
 import com.stackroute.MovieApp.exception.MovieNotFoundException;
 import org.springframework.http.HttpStatus;

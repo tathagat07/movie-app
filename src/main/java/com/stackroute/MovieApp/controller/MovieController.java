@@ -17,13 +17,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@Api
 @RestController
 @RequestMapping(value = "api/v1")
 public class MovieController {
-  MovieService movieService;
+  private MovieService movieService;
 
-  @Autowired
   Environment environment;
 
   @Autowired
@@ -44,12 +42,12 @@ public class MovieController {
   public ResponseEntity<?> saveNewMovie(@RequestBody Movie movie) {
     ResponseEntity responseEntity;
     try {
-          logger.info("Movie = "+movie);
-          logger.debug("Inside saveMovie()");
-          movieService.saveNewMovie(movie);
-          responseEntity = new ResponseEntity<String>("SuccessFully created",HttpStatus.CREATED);
+      logger.info("Movie = " + movie);
+      logger.debug("Inside saveMovie()");
+      movieService.saveNewMovie(movie);
+      responseEntity = new ResponseEntity<String>("SuccessFully created", HttpStatus.CREATED);
     } catch (MovieAlreadyExistsException e) {
-      responseEntity = new  ResponseEntity<String> ("Movie already exists", HttpStatus.CONFLICT);
+      responseEntity = new ResponseEntity<String>("Movie already exists", HttpStatus.CONFLICT);
     }
     return responseEntity;
   }
@@ -102,8 +100,8 @@ public class MovieController {
     }
   }
 
-   @GetMapping("/titles/{title}")
-    public ResponseEntity<List<Movie>> getByName(@RequestParam String title) {
+  @GetMapping("/titles/{title}")
+  public ResponseEntity<List<Movie>> getByName(@RequestParam String title) {
     List<Movie> movie = movieService.getByName(title);
     return new ResponseEntity<List<Movie>>(movie, HttpStatus.OK);
   }
