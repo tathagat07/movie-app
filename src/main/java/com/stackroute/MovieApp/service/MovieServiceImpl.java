@@ -4,6 +4,8 @@ import com.stackroute.MovieApp.domain.Movie;
 import com.stackroute.MovieApp.exception.MovieAlreadyExistsException;
 import com.stackroute.MovieApp.exception.MovieNotFoundException;
 import com.stackroute.MovieApp.repository.MovieRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,8 @@ public class MovieServiceImpl implements MovieService {
 
   MovieRepository movieRepository;
 
+  private static final Logger logger = LoggerFactory.getLogger(MovieServiceImpl.class);
+
   @Autowired
   public MovieServiceImpl(MovieRepository movieRepository){
     super();
@@ -26,10 +30,12 @@ public class MovieServiceImpl implements MovieService {
   public Movie saveNewMovie(Movie movie) throws MovieAlreadyExistsException {
 
     if(movieRepository.existsById(movie.getId())){
+      logger.info("Movie Already Exists");
       throw new MovieAlreadyExistsException("Movie Already Exists");
     }
     Movie savedMovie = movieRepository.save(movie);
     if (savedMovie == null){
+      logger.info("Movie Already Exists");
       throw new MovieAlreadyExistsException("Movie already exists");
     }
 
@@ -47,6 +53,7 @@ public class MovieServiceImpl implements MovieService {
     if (movieId.isPresent()){
        return movieId;
     }else {
+      logger.info("Movie Not Found");
       throw new MovieNotFoundException("Movie Not Found");
     }
   }
@@ -55,6 +62,7 @@ public class MovieServiceImpl implements MovieService {
   public boolean deleteById(int id) throws MovieNotFoundException{
     Optional<Movie> movieId = movieRepository.findById(id);
     if (movieId.isEmpty()){
+      logger.info("Movie Not Found");
       throw new MovieNotFoundException("Movie not found");
     }
      movieRepository.deleteById(id);
@@ -66,7 +74,8 @@ public class MovieServiceImpl implements MovieService {
   public Movie updateById(Movie movie, int id) throws MovieNotFoundException {
     Optional<Movie> userOptional = movieRepository.findById(id);
     if(userOptional.isEmpty()){
-      throw new MovieNotFoundException("Track not found!");
+      logger.info("Movie Not Found");
+      throw new MovieNotFoundException("Movie not found!");
     }
     movie.setId(id);
     movieRepository.save(movie);
