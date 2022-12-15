@@ -70,7 +70,7 @@ public class MovieController {
       movies = movieService.getById(id);
       return new ResponseEntity<Optional<Movie>>(movies, HttpStatus.OK);
     } catch (MovieNotFoundException e) {
-      logger.error("The Movie does't exist");
+      logger.error("The Movie doesn't exist");
       return new ResponseEntity<String>("No such movie found", HttpStatus.CONFLICT);
     }
   }
