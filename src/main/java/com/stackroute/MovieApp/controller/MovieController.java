@@ -26,7 +26,7 @@ public class MovieController {
 
     try {
       movieService.saveNewMovie(movie);
-      return new ResponseEntity<String >("Successfully created.",HttpStatus.CREATED);
+      return new ResponseEntity<String >("Successfully created with id :"+movie.getId(),HttpStatus.CREATED);
     }catch (Exception e){
       return new ResponseEntity<Movie>(movie,HttpStatus.CONFLICT);
     }
@@ -49,8 +49,8 @@ public class MovieController {
     }
 }
 
-@GetMapping("/delete/{id}")
-  public ResponseEntity<?>  deleteById(@RequestBody Movie movie,@PathVariable int id){
+@DeleteMapping("/delete/{id}")
+  public ResponseEntity<?>  deleteById(@PathVariable int id){
     try{
       movieService.deleteById(id);
       return new ResponseEntity<String >("Movie deleted.",HttpStatus.OK);
