@@ -16,77 +16,77 @@ import java.util.Optional;
 @Service
 public class MovieServiceImpl implements MovieService {
 
-  MovieRepository movieRepository;
+    MovieRepository movieRepository;
 
-  private static final Logger logger = LoggerFactory.getLogger(MovieServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(MovieServiceImpl.class);
 
-  @Autowired
-  public MovieServiceImpl(MovieRepository movieRepository){
-    super();
-    this.movieRepository = movieRepository;
-  }
-
-  @Override
-  public Movie saveNewMovie(Movie movie) throws MovieAlreadyExistsException {
-
-    if(movieRepository.existsById(movie.getId())){
-      logger.info("Movie Already Exists");
-      throw new MovieAlreadyExistsException("Movie Already Exists");
-    }
-    Movie savedMovie = movieRepository.save(movie);
-    if (savedMovie == null){
-      logger.info("Movie Already Exists");
-      throw new MovieAlreadyExistsException("Movie already exists");
+    @Autowired
+    public MovieServiceImpl(MovieRepository movieRepository) {
+        super();
+        this.movieRepository = movieRepository;
     }
 
-   return savedMovie;
-  }
+    @Override
+    public Movie saveNewMovie(Movie movie) throws MovieAlreadyExistsException {
 
-  @Override
-  public List<Movie> getAllMovie() {
-    return movieRepository.findAll();
-  }
+        if (movieRepository.existsById(movie.getId())) {
+            logger.info("Movie Already Exists");
+            throw new MovieAlreadyExistsException("Movie Already Exists");
+        }
+        Movie savedMovie = movieRepository.save(movie);
+        if (savedMovie == null) {
+            logger.info("Movie Already Exists");
+            throw new MovieAlreadyExistsException("Movie already exists");
+        }
 
-  @Override
-  public Optional<Movie> getById(int id) throws MovieNotFoundException {
-    Optional<Movie> movieId = movieRepository.findById(id);
-    if (movieId.isPresent()){
-       return movieId;
-    }else {
-      logger.info("Movie Not Found");
-      throw new MovieNotFoundException("Movie Not Found");
+        return savedMovie;
     }
-  }
 
-  @Override
-  public boolean deleteById(int id) throws MovieNotFoundException{
-    Optional<Movie> movieId = movieRepository.findById(id);
-    if (movieId.isEmpty()){
-      logger.info("Movie Not Found");
-      throw new MovieNotFoundException("Movie not found");
+    @Override
+    public List<Movie> getAllMovie() {
+        return movieRepository.findAll();
     }
-     movieRepository.deleteById(id);
-     return true;
 
-  }
-
-  @Override
-  public Movie updateById(Movie movie, int id) throws MovieNotFoundException {
-    Optional<Movie> userOptional = movieRepository.findById(id);
-    if(userOptional.isEmpty()){
-      logger.info("Movie Not Found");
-      throw new MovieNotFoundException("Movie not found!");
+    @Override
+    public Optional<Movie> getById(int id) throws MovieNotFoundException {
+        Optional<Movie> movieId = movieRepository.findById(id);
+        if (movieId.isPresent()) {
+            return movieId;
+        } else {
+            logger.info("Movie Not Found");
+            throw new MovieNotFoundException("Movie Not Found");
+        }
     }
-    movie.setId(id);
-    movieRepository.save(movie);
-    return movie;
-  }
 
-  @Override
-  public List<Movie> getByName(String title) {
-    List<Movie> id = movieRepository.findTitleByName(title);
-    return id;
-  }
+    @Override
+    public boolean deleteById(int id) throws MovieNotFoundException {
+        Optional<Movie> movieId = movieRepository.findById(id);
+        if (movieId.isEmpty()) {
+            logger.info("Movie Not Found");
+            throw new MovieNotFoundException("Movie not found");
+        }
+        movieRepository.deleteById(id);
+        return true;
+
+    }
+
+    @Override
+    public Movie updateById(Movie movie, int id) throws MovieNotFoundException {
+        Optional<Movie> userOptional = movieRepository.findById(id);
+        if (userOptional.isEmpty()) {
+            logger.info("Movie Not Found");
+            throw new MovieNotFoundException("Movie not found!");
+        }
+        movie.setId(id);
+        movieRepository.save(movie);
+        return movie;
+    }
+
+    @Override
+    public List<Movie> getByName(String title) {
+        List<Movie> id = movieRepository.findTitleByName(title);
+        return id;
+    }
 
 
 }
