@@ -1,4 +1,4 @@
-package com.stackroute.MovieApp.domain;
+package com.siemens.movieApp.domain;
 
 import javax.persistence.*;
 

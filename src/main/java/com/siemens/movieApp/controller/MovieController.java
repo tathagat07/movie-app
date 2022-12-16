@@ -1,8 +1,7 @@
-package com.stackroute.MovieApp.controller;
+package com.siemens.movieApp.controller;
 
-import com.stackroute.MovieApp.domain.Movie;
-import com.stackroute.MovieApp.service.MovieService;
-import com.stackroute.MovieApp.service.MovieServiceImpl;
+import com.siemens.movieApp.domain.Movie;
+import com.siemens.movieApp.service.MovieService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

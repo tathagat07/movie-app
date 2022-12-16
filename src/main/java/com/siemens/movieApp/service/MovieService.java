@@ -1,8 +1,8 @@
-package com.stackroute.MovieApp.service;
+package com.siemens.movieApp.service;
 
-import com.stackroute.MovieApp.domain.Movie;
-import com.stackroute.MovieApp.exception.MovieAlreadyExistsException;
-import com.stackroute.MovieApp.exception.MovieNotFoundException;
+import com.siemens.movieApp.domain.Movie;
+import com.siemens.movieApp.exception.MovieAlreadyExistsException;
+import com.siemens.movieApp.exception.MovieNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,7 +15,7 @@ public interface MovieService {
 
   public List<Movie> getAllMovie();
 
-  public Optional<Movie> getById(int id) throws MovieNotFoundException ;
+  public Optional<Movie> getById(int id) throws MovieNotFoundException;
 
   public boolean deleteById(int id) throws MovieNotFoundException;
 

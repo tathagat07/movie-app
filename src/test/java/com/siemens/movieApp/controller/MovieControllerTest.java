@@ -1,4 +1,4 @@
-package com.stackroute.MovieApp.controller;
+package com.siemens.movieApp.controller;
 
 import org.junit.After;
 import org.junit.Before;

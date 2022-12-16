@@ -1,15 +1,14 @@
-package com.stackroute.MovieApp.service;
+package com.siemens.movieApp.service;
 
-import com.stackroute.MovieApp.domain.Movie;
-import com.stackroute.MovieApp.exception.MovieAlreadyExistsException;
-import com.stackroute.MovieApp.exception.MovieNotFoundException;
-import com.stackroute.MovieApp.repository.MovieRepository;
+import com.siemens.movieApp.domain.Movie;
+import com.siemens.movieApp.exception.MovieAlreadyExistsException;
+import com.siemens.movieApp.exception.MovieNotFoundException;
+import com.siemens.movieApp.repository.MovieRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 

@@ -1,4 +1,4 @@
-package com.stackroute.MovieApp.exception;
+package com.siemens.movieApp.exception;
 
 public class MovieAlreadyExistsException extends Exception {
 

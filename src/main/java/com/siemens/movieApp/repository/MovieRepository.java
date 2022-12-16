@@ -1,6 +1,6 @@
-package com.stackroute.MovieApp.repository;
+package com.siemens.movieApp.repository;
 
-import com.stackroute.MovieApp.domain.Movie;
+import com.siemens.movieApp.domain.Movie;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

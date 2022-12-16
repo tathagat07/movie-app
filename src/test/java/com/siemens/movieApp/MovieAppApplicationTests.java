@@ -1,4 +1,4 @@
-package com.stackroute.MovieApp;
+package com.siemens.movieApp;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

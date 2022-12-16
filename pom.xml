@@ -8,7 +8,7 @@
         <version>2.1.8.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.stackroute</groupId>
+    <groupId>com.siemens</groupId>
     <artifactId>MovieApp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>MovieApp</name>
