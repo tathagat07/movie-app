@@ -1,11 +1,12 @@
 package com.stackroute.MovieApp.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@Entity(name = "Movie")
+@Entity(name = "movie")
+@Table(name = "movie")
 public class Movie {
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
   private String title;
   private String release_date;
